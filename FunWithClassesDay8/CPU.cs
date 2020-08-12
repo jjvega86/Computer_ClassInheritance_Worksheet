@@ -17,24 +17,49 @@ namespace FunWithClassesDay8
             this.name = name;
         }
        
-        public void ProcessInstall (Applications app, HardDrive hardDrive, RAM ram)
+        public void ProcessGameInstall (Games game, HardDrive hardDrive, RAM ram)
         {
-            hardDrive.ApplicationsInHardDrive.Add(app);
+            hardDrive.ApplicationsInHardDrive.Add(game);
 
         }
 
-        public bool CheckRequirements(Applications app, HardDrive hardDrive, RAM ram, GPU graphics)
+        public bool CheckGameRequirements(Games game, HardDrive hardDrive, RAM ram, GPU graphics)
         {
             bool canRun = false;
-            if (ram.totalGigabytes >= app.RequiredRAM && hardDrive.availableStorage >= app.RequiredStorage)
+            if (ram.totalGigabytes >= game.RequiredRAM && hardDrive.availableStorage >= game.RequiredStorage && game.requiredEffectiveMemory >= graphics.effectiveMemory)
             {
-                hardDrive.ApplicationsInHardDrive.Add(app);
+                hardDrive.ApplicationsInHardDrive.Add(game);
                 canRun = true;
+                
                 
             }
             else
             {
-                Console.WriteLine($"Your computer does not meet the minimum requirements for installing {app.ApplicationName}!");
+                Console.WriteLine($"Your computer does not meet the minimum requirements for installing {game.ApplicationName}!");
+            }
+
+            return canRun;
+
+        }
+        public void ProcessTextEditorInstall(Games game, HardDrive hardDrive)
+        {
+            hardDrive.ApplicationsInHardDrive.Add(game);
+
+        }
+
+        public bool CheckTextEditorRequirements(TextEditor editor, HardDrive hardDrive, RAM ram)
+        {
+            bool canRun = false;
+            if (ram.totalGigabytes >= editor.RequiredRAM && hardDrive.availableStorage >= editor.RequiredStorage)
+            {
+                hardDrive.ApplicationsInHardDrive.Add(editor);
+                canRun = true;
+
+
+            }
+            else
+            {
+                Console.WriteLine($"Your computer does not meet the minimum requirements for installing {editor.ApplicationName}!");
             }
 
             return canRun;

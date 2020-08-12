@@ -13,6 +13,10 @@ namespace FunWithClassesDay8
         public Games(double requiredEffectiveMemory)
         {
             this.requiredEffectiveMemory = requiredEffectiveMemory;
+            ApplicationName = "Slack";
+            ApplicationType = "Messaging service";
+            RequiredRAM = 4.0; //In Gigabytes
+            RequiredStorage = 0.512; //In Gigabytes
         }
     }
 }
