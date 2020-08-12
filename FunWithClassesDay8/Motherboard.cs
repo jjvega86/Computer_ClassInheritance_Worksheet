@@ -25,16 +25,6 @@ namespace FunWithClassesDay8
 
         }
 
-        public void InstallApplication(Applications application)
-        {
-            if (temporaryMemory.totalGigabytes >= application.RequiredRAM || storage.availableStorage >= application.RequiredStorage)
-            {
-                storage.ApplicationsInHardDrive.Add(application);
-            }
-            else
-            {
-                Console.WriteLine($"Your computer does not meet the minimum requirements for installing {application.ApplicationName}!");
-            }
-        }
+       
     }
 }

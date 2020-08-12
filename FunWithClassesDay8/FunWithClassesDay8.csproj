@@ -46,12 +46,14 @@
     <Compile Include="Applications.cs" />
     <Compile Include="Computer.cs" />
     <Compile Include="CPU.cs" />
+    <Compile Include="Games.cs" />
     <Compile Include="GPU.cs" />
     <Compile Include="HardDrive.cs" />
     <Compile Include="Motherboard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RAM.cs" />
+    <Compile Include="TextEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
