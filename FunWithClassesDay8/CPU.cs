@@ -17,12 +17,38 @@ namespace FunWithClassesDay8
             this.name = name;
         }
        
-        public void ProcessGameInstall (Games game, HardDrive hardDrive, RAM ram)
+        public void ProcessStandardInstall (Applications app, HardDrive hardDrive)
+        {
+            hardDrive.ApplicationsInHardDrive.Add(app);
+
+        }
+
+        public void ProcessGameInstall(Games game, HardDrive hardDrive)
         {
             hardDrive.ApplicationsInHardDrive.Add(game);
 
         }
 
+        public bool CheckRequirements(Applications app, HardDrive hardDrive, RAM ram, GPU graphics)
+        {
+            bool canRun = false;
+
+            
+            if (ram.totalGigabytes >= app.RequiredRAM && hardDrive.availableStorage >= app.RequiredStorage)
+            {
+                hardDrive.ApplicationsInHardDrive.Add(app);
+                canRun = true;
+
+
+            }
+            else
+            {
+                Console.WriteLine($"Your computer does not meet the minimum requirements for installing {app.ApplicationName}!");
+            }
+
+            return canRun;
+
+        }
         public bool CheckGameRequirements(Games game, HardDrive hardDrive, RAM ram, GPU graphics)
         {
             bool canRun = false;
@@ -30,40 +56,20 @@ namespace FunWithClassesDay8
             {
                 hardDrive.ApplicationsInHardDrive.Add(game);
                 canRun = true;
-                
-                
+
+
             }
             else
             {
                 Console.WriteLine($"Your computer does not meet the minimum requirements for installing {game.ApplicationName}!");
             }
 
-            return canRun;
-
-        }
-        public void ProcessTextEditorInstall(Games game, HardDrive hardDrive)
-        {
-            hardDrive.ApplicationsInHardDrive.Add(game);
-
-        }
-
-        public bool CheckTextEditorRequirements(TextEditor editor, HardDrive hardDrive, RAM ram)
-        {
-            bool canRun = false;
-            if (ram.totalGigabytes >= editor.RequiredRAM && hardDrive.availableStorage >= editor.RequiredStorage)
-            {
-                hardDrive.ApplicationsInHardDrive.Add(editor);
-                canRun = true;
-
-
-            }
-            else
-            {
-                Console.WriteLine($"Your computer does not meet the minimum requirements for installing {editor.ApplicationName}!");
-            }
 
             return canRun;
 
         }
+
+        
+        
     }
 }
